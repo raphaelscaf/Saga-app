@@ -1,0 +1,15 @@
+{
+  "name": "SAGA — RPG Pessoal",
+  "short_name": "SAGA",
+  "description": "Gamifique sua vida com IA. Missoes, XP e evolucao real.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#060a14",
+  "theme_color": "#0a0f1e",
+  "orientation": "portrait",
+  "lang": "pt-BR",
+  "icons": [
+    {"src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}
