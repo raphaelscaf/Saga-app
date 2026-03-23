@@ -69,7 +69,7 @@ Tipos: daily (habito diario), sprint (objetivo de semanas), epic (objetivo de me
 XP sugerido: daily=15-30, sprint=80-200, epic=500-2000`;
 
   // Build conversation messages for Claude API
-  const apiMessages = messages.map((m) => ({
+  const apiMessages = messages.map((m: { role: string; content: string }) => ({
     role: m.role === "sage" ? "assistant" : "user",
     content: m.content,
   }));

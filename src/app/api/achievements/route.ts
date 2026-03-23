@@ -50,7 +50,7 @@ export async function POST() {
     .eq("hero_id", hero.id)
     .eq("done", true);
 
-  const categoriesCompleted = [...new Set((catData || []).map((m) => m.category))];
+  const categoriesCompleted: string[] = Array.from(new Set((catData || []).map((m: { category: string }) => m.category)));
 
   // Get already unlocked
   const { data: existingAchievements } = await supabase
@@ -58,7 +58,7 @@ export async function POST() {
     .select("achievement_key")
     .eq("hero_id", hero.id);
 
-  const unlockedKeys = (existingAchievements || []).map((a) => a.achievement_key);
+  const unlockedKeys = (existingAchievements || []).map((a: { achievement_key: string }) => a.achievement_key);
 
   const stats: GameStats = {
     totalMissionsDone: totalMissionsDone || 0,
