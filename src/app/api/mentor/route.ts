@@ -15,9 +15,10 @@ export async function POST(request: Request) {
 
   if (!message) return NextResponse.json({ error: "Message is required" }, { status: 400 });
 
-  // Get API key
-  if (!hero.api_key) {
-    return NextResponse.json({ error: "API key not configured. Please add your Anthropic API key in settings." }, { status: 400 });
+  // Get API key (env var takes priority, fallback to user's key)
+  const apiKey = process.env.ANTHROPIC_API_KEY || hero.api_key;
+  if (!apiKey) {
+    return NextResponse.json({ error: "API key not configured." }, { status: 400 });
   }
 
   // Get last 10 chat messages
@@ -80,7 +81,7 @@ XP sugerido: daily=15-30, sprint=80-200, epic=500-2000`;
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": hero.api_key,
+        "x-api-key": apiKey,
         "anthropic-version": "2023-06-01",
       },
       body: JSON.stringify({
